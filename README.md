@@ -25,3 +25,24 @@ sbt clean compile test:compile it:compile re/test && \
 sbt coverage reJVM/test reJS/test && \
 sbt coverageReport
 ```
+
+Check:
+```bash
+sbt scalastyle test:scalastyle it:scalastyle && \
+sbt scapegoat && \
+sbt cpd && \
+sbt stats
+```
+
+All:
+```bash
+sbt scalafix test:scalafix it:scalafix && \
+sbt scalafmtSbt scalafmt test:scalafmt it:scalafmt && \
+sbt clean compile test:compile it:compile re/test && \
+sbt coverage reJVM/test reJS/test && \
+sbt coverageReport && \
+sbt scalastyle test:scalastyle it:scalastyle && \
+sbt scapegoat && \
+sbt cpd && \
+sbt stats
+```
