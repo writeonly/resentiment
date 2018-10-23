@@ -1,13 +1,27 @@
 # resentiment
 Proof of concept - a portable application in Scala/JVM, Scala.js &amp; Scala Native
 
-Run:
+Clone:
 ```bash
-sbt clean compile test re/run reJS/run reJVM/run
+git clone https://github.com/writeonly/resentiment.git
+cd resentiment
+```
+
+Refactor and reformat:
+```bash
+sbt scalafix test:scalafix it:scalafix && \
+sbt scalafmtSbt scalafmt test:scalafmt it:scalafmt
+```
+
+Check lint and format:
+```bash
+sbt 'scalafix --check' 'test:scalafix --check' 'it:scalafix --check' && \
+sbt scalafmtSbtCheck scalafmtCheck test:scalafmtCheck it:scalafmtCheck 
 ```
 
 Compile, test and generate coverage report:
 ```bash
-sbt clean compile re/test coverage reJVM/test reJS/test && sbt coverageReport
+sbt clean compile test:compile it:compile re/test && \
+sbt coverage reJVM/test reJS/test && \
+sbt coverageReport
 ```
-
