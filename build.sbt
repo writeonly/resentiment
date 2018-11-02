@@ -6,6 +6,8 @@ import scoverage.ScoverageKeys.coverageEnabled
 val mainClassString = "pl.writeonly.re.main.Main"
 val mainClassSome = Some(mainClassString)
 
+scapegoatVersion in ThisBuild := "1.3.8"
+
 val sharedSettings = Seq(
   scalaVersion := "2.11.12",
   mainClass in (Compile, run) := Some("pl.writeonly.re.main.Main"),
@@ -27,6 +29,8 @@ val sharedSettings = Seq(
     "-Xfatal-warnings",
     "-Xlint",
   ),
+  wartremoverErrors ++= Warts.unsafe,
+  scapegoatVersion := "1.1.0",
 )
 
 val jsSettings = Seq(
