@@ -18,6 +18,7 @@ val mainClassSome = Some(mainClassString)
 scalaVersion := "2.11.12"
 scapegoatVersion in ThisBuild := "1.3.8"
 scalacOptions ++= scalacOptionsFor(scalaVersion.value)
+val ScalaPropsVersion = "0.5.5"
 
 val SharedSettings = Seq(
   scalaVersion := "2.11.12",
@@ -26,7 +27,12 @@ val SharedSettings = Seq(
   scalacOptions --= ScalaFixScalacOptionsOff,
   mainClass in (Compile, run) := Some("pl.writeonly.re.main.Main"),
   testFrameworks += new TestFramework("utest.runner.Framework"),
+  resolvers += Opts.resolver.sonatypeReleases,
   libraryDependencies += "com.lihaoyi" %%% "utest" % "0.6.5" % "test",
+  libraryDependencies ++= Seq(
+    "com.github.scalaprops" %%% "scalaprops" % ScalaPropsVersion % "test,it",
+    "com.github.scalaprops" %%% "scalaprops-scalazlaws" % ScalaPropsVersion % "test,it",
+  ),
   scalaJSUseMainModuleInitializer := true,
   scalaJSMainModuleInitializer := Some(
     ModuleInitializer.mainMethod(mainClassString, "main")
@@ -53,18 +59,27 @@ val nativeSettings = Seq(nativeLinkStubs := true)
 lazy val re = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   .withoutSuffixFor(NativePlatform)
   .crossType(CrossType.Full)
-  .configs(IntegrationTest)
-  .settings(
-    Defaults.itSettings,
-    inConfig(IntegrationTest)(ScalafmtPlugin.scalafmtConfigSettings),
-    inConfig(IntegrationTest)(scalariformItSettings),
-    inConfig(IntegrationTest)(scalafixConfigSettings(IntegrationTest)),
-  )
   .settings(SharedSettings)
   .jsSettings(jsSettings)
   .jvmSettings(jvmSettings)
   .nativeSettings(nativeSettings)
+  // IntegrationTest
+  .configs(IntegrationTest)
+  .settings(Defaults.itSettings)
+  .settings(
+    inConfig(IntegrationTest)(scalafixConfigSettings(IntegrationTest)),
+    inConfig(IntegrationTest)(ScalafmtPlugin.scalafmtConfigSettings),
+    inConfig(IntegrationTest)(scalariformItSettings),
+    unmanagedSourceDirectories in IntegrationTest ++= CrossType.Full.sharedSrcDir(baseDirectory.value, "it").toSeq
+  )
+  .jsSettings(inConfig(IntegrationTest)(ScalaJSPlugin.testConfigSettings))
+  .nativeSettings(inConfig(IntegrationTest)(Defaults.testSettings))
+  // PropsTest
+  .settings(scalapropsCoreSettings)
+  //.nativeSettings(scalapropsNativeSettings)
 
-lazy val reJS = re.js
-lazy val reJVM = re.jvm.enablePlugins(ScalaJSPlugin)
+lazy val reJS = re.js.enablePlugins(ScalaJSPlugin)
+lazy val reJVM = re.jvm
 lazy val reNative = re.native.enablePlugins(ScalaNativePlugin)
+
+

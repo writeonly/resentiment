@@ -22,7 +22,7 @@ sbt scalafmtSbtCheck scalafmtCheck test:scalafmtCheck it:scalafmtCheck
 Compile, test and generate coverage report:
 ```bash
 sbt clean compile test:compile it:compile re/test && \
-sbt coverage reJVM/test reJS/test && \
+sbt coverage reJS/test reJVM/test reJS/it:test reJVM/it:test && \
 sbt coverageReport
 ```
 
@@ -37,7 +37,7 @@ All:
 sbt scalafix test:scalafix it:scalafix && \
 sbt scalafmtSbt scalafmt test:scalafmt it:scalafmt && \
 sbt clean compile test:compile it:compile re/test && \
-sbt coverage reJVM/test reJS/test && \
+sbt coverage reJS/test reJVM/test reJS/it:test reJVM/it:test && \
 sbt coverageReport && \
 sbt scalastyle test:scalastyle it:scalastyle && \
 sbt scapegoat cpd stats

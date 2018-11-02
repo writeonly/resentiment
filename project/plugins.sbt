@@ -32,3 +32,6 @@ addSbtPlugin("com.orrsella" % "sbt-stats" % "1.0.7")
 addSbtPlugin("com.softwaremill.clippy" % "plugin-sbt" % "0.5.3")
 //// sbt-cpd Copy & Paste Detector plugin using PMD for sbt.
 addSbtPlugin("com.github.sbt" % "sbt-cpd" % "2.0.0")
+
+//// scalaprops -  property based testing library for Scala
+addSbtPlugin("com.github.scalaprops" % "sbt-scalaprops" % "0.2.6")
