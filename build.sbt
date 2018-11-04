@@ -3,25 +3,27 @@ import sbt.inConfig
 import sbtcrossproject.CrossPlugin.autoImport.{CrossType, crossProject}
 import scoverage.ScoverageKeys.coverageEnabled
 
-val sharedScalacOptions = Seq(
-  "-unchecked",
-  "-deprecation",
-  "-feature",
-  "-Ypartial-unification",
-  "-Yrangepos",
-  "-Ywarn-unused",
-  "-Ywarn-unused-import",
-  "-Xfatal-warnings",
-  "-Xlint",
+val ScalaFixScalacOptions = Seq(
+  "-Ywarn-adapted-args", // for NoAutoTupling
+  "-Ywarn-unused", // for RemoveUnused
+)
+
+val ScalaFixScalacOptionsOff = Seq(
+  "-Xfatal-warnings",   // it should be disabled for scalafix
 )
 
 val mainClassString = "pl.writeonly.re.main.Main"
 val mainClassSome = Some(mainClassString)
 
+scalaVersion := "2.11.12"
 scapegoatVersion in ThisBuild := "1.3.8"
+scalacOptions ++= scalacOptionsFor(scalaVersion.value)
 
-val sharedSettings = Seq(
+val SharedSettings = Seq(
   scalaVersion := "2.11.12",
+  scalacOptions ++= scalacOptionsFor(scalaVersion.value),
+  scalacOptions ++= ScalaFixScalacOptions,
+  scalacOptions --= ScalaFixScalacOptionsOff,
   mainClass in (Compile, run) := Some("pl.writeonly.re.main.Main"),
   testFrameworks += new TestFramework("utest.runner.Framework"),
   libraryDependencies += "com.lihaoyi" %%% "utest" % "0.6.5" % "test",
@@ -30,7 +32,6 @@ val sharedSettings = Seq(
     ModuleInitializer.mainMethod(mainClassString, "main")
   ),
   addCompilerPlugin(scalafixSemanticdb),
-  scalacOptions ++= sharedScalacOptions,
   wartremoverErrors ++= Warts.unsafe,
   scapegoatVersion := "1.3.8",
 )
@@ -59,7 +60,7 @@ lazy val re = crossProject(JSPlatform, JVMPlatform, NativePlatform)
     inConfig(IntegrationTest)(scalariformItSettings),
     inConfig(IntegrationTest)(scalafixConfigSettings(IntegrationTest)),
   )
-  .settings(sharedSettings)
+  .settings(SharedSettings)
   .jsSettings(jsSettings)
   .jvmSettings(jvmSettings)
   .nativeSettings(nativeSettings)
