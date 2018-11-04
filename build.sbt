@@ -3,6 +3,18 @@ import sbt.inConfig
 import sbtcrossproject.CrossPlugin.autoImport.{CrossType, crossProject}
 import scoverage.ScoverageKeys.coverageEnabled
 
+val sharedScalacOptions = Seq(
+  "-unchecked",
+  "-deprecation",
+  "-feature",
+  "-Ypartial-unification",
+  "-Yrangepos",
+  "-Ywarn-unused",
+  "-Ywarn-unused-import",
+  "-Xfatal-warnings",
+  "-Xlint",
+)
+
 val mainClassString = "pl.writeonly.re.main.Main"
 val mainClassSome = Some(mainClassString)
 
@@ -18,19 +30,9 @@ val sharedSettings = Seq(
     ModuleInitializer.mainMethod(mainClassString, "main")
   ),
   addCompilerPlugin(scalafixSemanticdb),
-  scalacOptions ++= Seq(
-    "-unchecked",
-    "-deprecation",
-    "-feature",
-    "-Ypartial-unification",
-    "-Yrangepos",
-    "-Ywarn-unused",
-    "-Ywarn-unused-import",
-    "-Xfatal-warnings",
-    "-Xlint",
-  ),
+  scalacOptions ++= sharedScalacOptions,
   wartremoverErrors ++= Warts.unsafe,
-  scapegoatVersion := "1.1.0",
+  scapegoatVersion := "1.3.8",
 )
 
 val jsSettings = Seq(

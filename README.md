@@ -29,9 +29,7 @@ sbt coverageReport
 Check:
 ```bash
 sbt scalastyle test:scalastyle it:scalastyle && \
-sbt scapegoat && \
-sbt cpd && \
-sbt stats
+sbt scapegoat cpd stats
 ```
 
 All:
@@ -42,7 +40,5 @@ sbt clean compile test:compile it:compile re/test && \
 sbt coverage reJVM/test reJS/test && \
 sbt coverageReport && \
 sbt scalastyle test:scalastyle it:scalastyle && \
-sbt scapegoat && \
-sbt cpd && \
-sbt stats
+sbt scapegoat cpd stats
 ```
