@@ -35,3 +35,7 @@ addSbtPlugin("com.github.sbt" % "sbt-cpd" % "2.0.0")
 
 //// scalaprops -  property based testing library for Scala
 addSbtPlugin("com.github.scalaprops" % "sbt-scalaprops" % "0.2.6")
+//// sbt-pit
+//addSbtPlugin("org.pitest.sbt" %  "sbt-pit" % "0.32")
+//addSbtPlugin("io.github.sugakandrey" % "sbt-scalamu" % "0.1.2")
+addSbtPlugin("io.github.sugakandrey" % "sbt-scalamu" % "0.1.1")

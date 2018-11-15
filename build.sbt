@@ -38,7 +38,7 @@ val SharedSettings = Seq(
     ModuleInitializer.mainMethod(mainClassString, "main")
   ),
   addCompilerPlugin(scalafixSemanticdb),
-  wartremoverErrors ++= Warts.unsafe,
+//  wartremoverErrors ++= Warts.unsafe,
   scapegoatVersion := "1.3.8",
 )
 
@@ -77,6 +77,8 @@ lazy val re = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   // PropsTest
   .settings(scalapropsCoreSettings)
   //.nativeSettings(scalapropsNativeSettings)
+  // MutationTest
+  .settings(ScalamuPlugin.projectSettings)
 
 lazy val reJS = re.js.enablePlugins(ScalaJSPlugin)
 lazy val reJVM = re.jvm
