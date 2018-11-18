@@ -15,12 +15,14 @@ val ScalaFixScalacOptionsOff = Seq(
 val mainClassString = "pl.writeonly.re.main.Main"
 val mainClassSome = Some(mainClassString)
 
+crossScalaVersions := Seq("2.11.12")
 scalaVersion := "2.11.12"
 scapegoatVersion in ThisBuild := "1.3.8"
 scalacOptions ++= scalacOptionsFor(scalaVersion.value)
 val ScalaPropsVersion = "0.5.5"
 
 val SharedSettings = Seq(
+  crossScalaVersions := Seq("2.11.12"),
   scalaVersion := "2.11.12",
   scalacOptions ++= scalacOptionsFor(scalaVersion.value),
   scalacOptions ++= ScalaFixScalacOptions,
