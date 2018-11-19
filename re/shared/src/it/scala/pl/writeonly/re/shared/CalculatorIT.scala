@@ -1,6 +1,6 @@
 package pl.writeonly.re.shared
 
-import scalaprops.{ Property, Scalaprops }
+import scalaprops.{Property, Scalaprops}
 
 object CalculatorIT extends Scalaprops {
   val calculator = new Calculator()
