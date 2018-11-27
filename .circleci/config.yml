@@ -1,0 +1,56 @@
+# Scala CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/sample-config/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/openjdk:8-jdk-stretch
+      
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/postgres:9.4
+
+    working_directory: ~/repo
+
+    environment:
+      # Customize the JVM maximum heap limit
+      JVM_OPTS: -Xmx3200m
+      TERM: dumb
+    
+    steps:
+      - run: cat /etc/os-release
+      - run: cat /etc/apt/sources.list
+      - run: gcc --version
+      - run: sudo apt-get install software-properties-common
+      - run: wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
+      - run: sudo apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-6.0 main"
+      - run: sudo apt-get update -y
+      - run: sudo apt-get install -y libstdc++-5-dev/unstable
+      - run: sudo apt-get install -y libgcc-5-dev/unstable
+      - run: sudo apt-get install -y libobjc-5-dev/unstable
+      - run: sudo apt-get install -y llvm-6.0-dev
+      - run: sudo apt-get install -y libomp-dev
+      - run: sudo apt-get install -y clang-6.0
+
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "build.sbt" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: cat /dev/null | sbt test:compile
+
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: v1-dependencies--{{ checksum "build.sbt" }}
+        
+      # run tests!
+      - run: cat /dev/null | sbt test:test
