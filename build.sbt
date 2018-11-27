@@ -69,7 +69,7 @@ lazy val re = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   .settings(
     inConfig(IntegrationTest)(scalafixConfigSettings(IntegrationTest)),
     inConfig(IntegrationTest)(ScalafmtPlugin.scalafmtConfigSettings),
-    inConfig(IntegrationTest)(scalariformItSettings),
+//    inConfig(IntegrationTest)(scalariformItSettings),
     unmanagedSourceDirectories in IntegrationTest ++= CrossType.Full.sharedSrcDir(baseDirectory.value, "it").toSeq
   )
   .jsSettings(inConfig(IntegrationTest)(ScalaJSPlugin.testConfigSettings))
