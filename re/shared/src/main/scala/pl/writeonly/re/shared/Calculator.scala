@@ -7,6 +7,6 @@ class Calculator {
 
   def mul(a: T, b: T): T = a * b
 
-  def leq(a: T, b: T): Boolean = a < b
+  def leq(a: T, b: T): Boolean = a <= b
 
 }
