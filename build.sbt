@@ -19,7 +19,6 @@ scalaVersion := "2.11.12"
 scapegoatVersion in ThisBuild := "1.3.8"
 scalacOptions ++= scalacOptionsFor(scalaVersion.value)
 val ScalaPropsVersion = "0.5.5"
-
 val SloggingVersion = "0.6.1"
 
 val SharedSettings = Seq(
@@ -30,13 +29,13 @@ val SharedSettings = Seq(
   mainClass in (Compile, run) := Some("pl.writeonly.re.main.Main"),
   testFrameworks += new TestFramework("utest.runner.Framework"),
   resolvers += Opts.resolver.sonatypeReleases,
-  libraryDependencies ++= Seq(
-    "biz.enef" %%% "slogging" % SloggingVersion,
-  ),
   libraryDependencies += "com.lihaoyi" %%% "utest" % "0.6.5" % "test",
   libraryDependencies ++= Seq(
     "com.github.scalaprops" %%% "scalaprops" % ScalaPropsVersion % "test,it",
     "com.github.scalaprops" %%% "scalaprops-scalazlaws" % ScalaPropsVersion % "test,it",
+  ),
+  libraryDependencies ++= Seq(
+    "biz.enef" %%% "slogging" % SloggingVersion,
   ),
   scalaJSUseMainModuleInitializer := true,
   scalaJSMainModuleInitializer := Some(

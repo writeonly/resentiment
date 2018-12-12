@@ -1,7 +1,12 @@
 package pl.writeonly.re.shared
 
-object Core {
-  def apply(arg: String): Unit = {
-    println(s"Hello Scala $arg!")
+trait Core {
+  def apply(arg: String): Unit
+}
+
+object Core extends Core {
+  override def apply(arg: String): Unit = {
+    StrictLoggingCore(arg)
+    LazyLoggingCore(arg)
   }
 }
