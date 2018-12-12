@@ -1,6 +1,14 @@
 # resentiment
 Proof of concept - a portable application in Scala/JVM, Scala.js &amp; Scala Native
 
+[![Build Status](https://api.travis-ci.org/writeonly/resentiment.svg?branch=master)](https://travis-ci.org/writeonly/resentiment)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/53879302eadd48c38adcbbdc68e7ccfb)](https://app.codacy.com/app/kamil-adam/resentiment?utm_source=github.com&utm_medium=referral&utm_content=writeonly/resentiment&utm_campaign=Badge_Grade_Dashboard)
+[![Codecov](https://img.shields.io/codecov/c/github/writeonly/resentiment.svg)](https://codecov.io/gh/writeonly/resentiment)
+[![Coverage Status](https://coveralls.io/repos/github/writeonly/resentiment/badge.svg)](https://coveralls.io/github/writeonly/resentiment)
+[![GitHub issues](https://img.shields.io/github/issues/writeonly/resentiment.svg)](https://github.com/writeonly/resentiment/issues)
+![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/writeonly/resentiment.svg)
+![License](https://img.shields.io/github/license/mashape/apistatus.svg)
+
 Clone:
 ```bash
 git clone https://github.com/writeonly/resentiment.git
