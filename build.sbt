@@ -19,6 +19,7 @@ scalaVersion := "2.11.12"
 scapegoatVersion in ThisBuild := "1.3.8"
 scalacOptions ++= scalacOptionsFor(scalaVersion.value)
 val ScalaPropsVersion = "0.5.5"
+val SloggingVersion = "0.6.1"
 
 val SharedSettings = Seq(
   scalaVersion := "2.11.12",
@@ -33,6 +34,9 @@ val SharedSettings = Seq(
     "com.github.scalaprops" %%% "scalaprops" % ScalaPropsVersion % "test,it",
     "com.github.scalaprops" %%% "scalaprops-scalazlaws" % ScalaPropsVersion % "test,it",
   ),
+  libraryDependencies ++= Seq(
+    "biz.enef" %%% "slogging" % SloggingVersion,
+  ),
   scalaJSUseMainModuleInitializer := true,
   scalaJSMainModuleInitializer := Some(
     ModuleInitializer.mainMethod(mainClassString, "main")
@@ -46,15 +50,26 @@ val jsSettings = Seq(
   mainClass in Compile := mainClassSome,
   scalaJSUseMainModuleInitializer := true,
   coverageEnabled := true,
+  libraryDependencies ++= Seq(
+    "biz.enef" %%% "slogging-winston" % SloggingVersion,
+  ),
 )
 
 val jvmSettings = Seq(
   mainClass in Compile := mainClassSome,
   scalaJSUseMainModuleInitializer := true,
   coverageEnabled := true,
+  libraryDependencies ++= Seq(
+    "ch.qos.logback" % "logback-classic" % "1.2.3",
+  ),
 )
 
-val nativeSettings = Seq(nativeLinkStubs := true)
+val nativeSettings = Seq(
+  nativeLinkStubs := true,
+  libraryDependencies ++= Seq(
+    "biz.enef" %%% "slogging-syslog" % SloggingVersion,
+  ),
+)
 
 lazy val re = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   .withoutSuffixFor(NativePlatform)
