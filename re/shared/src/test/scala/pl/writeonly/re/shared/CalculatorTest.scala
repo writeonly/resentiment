@@ -1,5 +1,6 @@
 package pl.writeonly.re.shared
 
+import scalaz.Scalaz._
 import utest._
 
 object CalculatorTest extends TestSuite {
@@ -8,19 +9,19 @@ object CalculatorTest extends TestSuite {
     'addition - {
       val addition: (Int, Int) => Int = (x, y) => calculator.add(x, y)
       "0 + 0 == 0" - {
-        assert(addition(0, 0) == 0)
+        assert(addition(0, 0) === 0)
       }
       "2 + 2 == 4" - {
-        assert(addition(2, 2) == 4)
+        assert(addition(2, 2) === 4)
       }
     }
     'multiplication - {
       val multiplication: (Int, Int) => Int = (x, y) => calculator.mul(x, y)
       "0 + 0 == 0" - {
-        assert(multiplication(0, 0) == 0)
+        assert(multiplication(0, 0) === 0)
       }
       "2 + 2 == 4" - {
-        assert(multiplication(2, 2) == 4)
+        assert(multiplication(2, 2) === 4)
       }
     }
     'less_or_equal - {

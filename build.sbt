@@ -34,6 +34,7 @@ val SharedSettings = Seq(
     "com.github.scalaprops" %%% "scalaprops" % ScalaPropsVersion % "test,it",
     "com.github.scalaprops" %%% "scalaprops-scalazlaws" % ScalaPropsVersion % "test,it",
   ),
+  libraryDependencies += "org.scalaz" %%% "scalaz-core" % "7.2.27",
   libraryDependencies ++= Seq(
     "biz.enef" %%% "slogging" % SloggingVersion,
   ),
