@@ -1,5 +1,6 @@
 package pl.writeonly.re.shared.scalapipe
 
+// trait for cake pattern
 trait ScalaPipeOps {
   implicit def toPipe[A](a: A): ScalaPipe[A] = ScalaPipe(a)
 
@@ -13,4 +14,5 @@ trait ScalaPipeOps {
 
 }
 
+// object for static import
 object ScalaPipeOps extends ScalaPipeOps
