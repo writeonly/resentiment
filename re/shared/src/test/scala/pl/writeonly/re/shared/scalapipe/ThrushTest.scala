@@ -11,32 +11,32 @@ object ThrushTest extends TestSuite {
   override val tests: Tests = Tests {
     'into_with_lambda - {
       val result = 1 |> (_ + 2)
-      assert(result === 3)
+      result ==> 3
     }
     'into_with_method - {
       val result = 1 |> secondFunction
-      assert(result === 3)
+      result ==> 3
     }
     'into_with_method_end - {
       val result = data |>
         firstFunction |>
         secondFunction |>
         threeFunction
-      assert(result === 7)
+      result ==> 7
     }
     'into_with_method_front - {
       val result = 1
         .|>(firstFunction)
         .|>(secondFunction)
         .|>(threeFunction)
-      assert(result === 7)
+      result ==> 7
     }
     'into_with_method_front_into - {
       val result = 1
         .into(firstFunction)
         .into(secondFunction)
         .into(threeFunction)
-      assert(result === 7)
+      result ==> 7
     }
   }
 }

@@ -38,6 +38,7 @@ val SharedSettings = Seq(
   libraryDependencies ++= Seq(
     "biz.enef" %%% "slogging" % SloggingVersion,
   ),
+  libraryDependencies += "com.lihaoyi" %%% "fastparse" % "1.0.0",
   scalaJSUseMainModuleInitializer := true,
   scalaJSMainModuleInitializer := Some(
     ModuleInitializer.mainMethod(mainClassString, "main")

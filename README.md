@@ -43,7 +43,7 @@ sbt scalastyle test:scalastyle it:scalastyle &&
 sbt scapegoat cpd stats
 ```
 
-All for travis-ci:
+All for travis-ci (without Scala Native):
 ```bash
 sbt 'scalafix --check' 'test:scalafix --check' 'it:scalafix --check' &&
 sbt scalafmtSbtCheck scalafmtCheck test:scalafmtCheck it:scalafmtCheck &&
@@ -54,7 +54,7 @@ sbt scalastyle test:scalastyle it:scalastyle &&
 sbt scapegoat cpd stats
 ```
 
-Only Scala Native
+Only Scala Native:
 ```bash
 sbt re/scalafix re/test:scalafix re/it:scalafix && 
 sbt re/scalafmtSbt re/scalafmt re/test:scalafmt re/it:scalafmt && 
