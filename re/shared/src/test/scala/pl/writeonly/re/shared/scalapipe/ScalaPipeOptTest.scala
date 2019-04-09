@@ -8,11 +8,11 @@ object ScalaPipeOptTest extends TestSuite {
 
   override val tests: Tests = Tests {
     'pipe_with_lambda - {
-      val result = 1 ||> (_ + 2)
+      val result = 1 |> (_ + 2)
       result ==> 3
     }
     'pipe_with_method - {
-      val result = 1 ||> add2
+      val result = 1 |> add2
       result ==> 3
     }
   }
