@@ -5,7 +5,7 @@ trait ScalaPipeOps {
   implicit def toPipe[A](a: A): ScalaPipe[A] = ScalaPipe(a)
 
   class ScalaPipe[A](a: A) {
-    def ||>[B](f: A => B): B = f(a)
+    def |>[B](f: A => B): B = f(a)
   }
 
   object ScalaPipe {
