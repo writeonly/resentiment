@@ -187,7 +187,7 @@
  <check enabled="true" class="org.scalastyle.scalariform.SpaceAfterCommentStartChecker" level="error"/>
  <check enabled="true" class="org.scalastyle.scalariform.TodoCommentChecker" level="error">
   <parameters>
-   <parameter default="TODO|FIXME" type="string" name="words"/>
+   <parameter name="words">TODO|FIXME</parameter>
   </parameters>
  </check>
  <check enabled="false" class="org.scalastyle.scalariform.UnderscoreImportChecker" level="error">
