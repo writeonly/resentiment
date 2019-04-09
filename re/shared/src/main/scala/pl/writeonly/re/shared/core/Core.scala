@@ -1,4 +1,4 @@
-package pl.writeonly.re.shared
+package pl.writeonly.re.shared.core
 
 trait Core {
   def apply(arg: String): Unit

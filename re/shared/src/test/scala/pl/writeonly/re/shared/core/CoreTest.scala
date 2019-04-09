@@ -1,4 +1,4 @@
-package pl.writeonly.re.shared
+package pl.writeonly.re.shared.core
 
 import utest._
 

@@ -1,6 +1,6 @@
-package pl.writeonly.re.shared
+package pl.writeonly.re.shared.calculator
 
-import scalaprops.{Property, Scalaprops}
+import scalaprops._
 import scalaz.Scalaz._
 
 object CalculatorIT extends Scalaprops {
