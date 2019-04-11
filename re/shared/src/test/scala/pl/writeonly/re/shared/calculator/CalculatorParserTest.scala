@@ -1,7 +1,7 @@
 package pl.writeonly.re.shared.calculator
 
 import fastparse.core.Parsed
-import utest.{* => _, _}
+import utest._
 
 @SuppressWarnings(Array("org.wartremover.warts.Any"))
 object CalculatorParserTest extends TestSuite {
