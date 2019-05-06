@@ -14,7 +14,8 @@ val ScalaFixScalacOptionsOff = Seq(
   "-Xfatal-warnings",   // it should be disabled for scalafix
 )
 
-val mainClassString = "pl.writeonly.re.main.Main"
+//val mainClassString = "pl.writeonly.re.main.Main"
+val mainClassString = "pl.writeonly.re.main.llvm.regex.Main"
 val mainClassSome = Some(mainClassString)
 
 scalaVersion := "2.11.12"
@@ -22,6 +23,7 @@ scapegoatVersion in ThisBuild := "1.3.8"
 scalacOptions ++= scalacOptionsFor(scalaVersion.value)
 val ScalaPropsVersion = "0.5.5"
 val SloggingVersion = "0.6.1"
+val ScalazVersion = "7.2.27"
 
 val SharedSettings = Seq(
   scalaVersion := "2.11.12",
@@ -36,7 +38,10 @@ val SharedSettings = Seq(
     "com.github.scalaprops" %%% "scalaprops" % ScalaPropsVersion % "test,it",
     "com.github.scalaprops" %%% "scalaprops-scalazlaws" % ScalaPropsVersion % "test,it",
   ),
-  libraryDependencies += "org.scalaz" %%% "scalaz-core" % "7.2.27",
+  libraryDependencies ++= Seq(
+    "org.scalaz" %%% "scalaz-core" % ScalazVersion,
+    "org.scalaz" %%% "scalaz-effect" % ScalazVersion,
+  ),
   libraryDependencies ++= Seq(
     "biz.enef" %%% "slogging" % SloggingVersion,
   ),
@@ -71,6 +76,7 @@ val jvmSettings = Seq(
 )
 
 val nativeSettings = Seq(
+  mainClass in Compile := mainClassSome,
   nativeLinkStubs := true,
 //  nativeLinkingOptions += "-lglib-2.0",
   libraryDependencies ++= Seq(
