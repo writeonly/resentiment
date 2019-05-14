@@ -62,3 +62,41 @@ sbt clean re/compile re/test:compile re/it:compile re/test &&
 sbt scalastyle test:scalastyle it:scalastyle &&
 sbt scapegoat cpd stats
 ```
+
+## Run
+```bash
+sbt re/run
+sbt reJS/run
+sbt reJVM/run
+```
+
+
+## Linking
+### Scala Native
+
+To build an executable without running:
+```bash
+sbt nativeLink
+```
+
+To then run that executable:
+```bash
+./target/scala-2.11/scala-native-example-app-out
+```
+
+### Scala JVM
+https://github.com/sbt/sbt-assembly
+
+```bash
+sbt assembly
+```
+
+### Scala JS
+
+```bash
+sbt reJS/fastOptJS
+```
+
+```bash
+sbt fullOptJS
+```
