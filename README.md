@@ -98,5 +98,5 @@ sbt reJS/fastOptJS
 ```
 
 ```bash
-sbt fullOptJS
+sbt reJS/fullOptJS
 ```

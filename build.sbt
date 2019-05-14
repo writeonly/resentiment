@@ -39,7 +39,6 @@ val SharedSettings = Seq(
     "biz.enef" %%% "slogging" % SloggingVersion,
   ),
   libraryDependencies += "com.lihaoyi" %%% "fastparse" % "1.0.0",
-  scalaJSUseMainModuleInitializer := true,
   scalaJSMainModuleInitializer := Some(
     ModuleInitializer.mainMethod(mainClassString, "main")
   ),
@@ -51,15 +50,19 @@ val SharedSettings = Seq(
 val jsSettings = Seq(
   mainClass in Compile := mainClassSome,
   scalaJSUseMainModuleInitializer := true,
+  skip in packageJSDependencies := false,
+  jsEnv := new org.scalajs.jsenv.nodejs.NodeJSEnv(),
   coverageEnabled := true,
   libraryDependencies ++= Seq(
+    "org.webjars" % "requirejs" % "2.3.6",
+    "org.scala-js" %% "scalajs-env-nodejs" % "1.0.0-M7",
+
     "biz.enef" %%% "slogging-winston" % SloggingVersion,
   ),
 )
 
 val jvmSettings = Seq(
   mainClass in Compile := mainClassSome,
-  scalaJSUseMainModuleInitializer := true,
   coverageEnabled := true,
   libraryDependencies ++= Seq(
     "ch.qos.logback" % "logback-classic" % "1.2.3",

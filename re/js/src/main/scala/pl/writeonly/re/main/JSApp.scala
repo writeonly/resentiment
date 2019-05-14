@@ -1,9 +1,9 @@
-package pl.writeonly.re.main
+//package pl.writeonly.re.main
 
-import scala.scalajs.js.annotation.JSExport
+//import scala.scalajs.js.annotation.JSExport
 
-trait JSApp {
-  @SuppressWarnings(Array("org.wartremover.warts.Any"))
-  @JSExport
-  def main(): Unit
-}
+//trait JSApp {
+//  @SuppressWarnings(Array("org.wartremover.warts.Any"))
+//  @JSExport
+//  def main(): Unit
+//}
