@@ -30,7 +30,7 @@ addCompilerPlugin("org.psywerx.hairyfotr" %% "linter" % "0.1.17")
 //// stats - An sbt plugin for source code statistics
 addSbtPlugin("com.orrsella" % "sbt-stats" % "1.0.7")
 //// scala-clippy - Good advice for Scala compiler errors
-addSbtPlugin("com.softwaremill.clippy" % "plugin-sbt" % "0.5.3")
+addSbtPlugin("com.softwaremill.clippy" % "plugin-sbt" % "0.6.1")
 //// sbt-cpd Copy & Paste Detector plugin using PMD for sbt.
 addSbtPlugin("com.github.sbt" % "sbt-cpd" % "2.0.0")
 

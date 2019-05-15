@@ -56,9 +56,21 @@ sbt scapegoat cpd stats
 
 Only Scala Native:
 ```bash
-sbt re/scalafix re/test:scalafix re/it:scalafix && 
-sbt re/scalafmtSbt re/scalafmt re/test:scalafmt re/it:scalafmt && 
-sbt clean re/compile re/test:compile re/it:compile re/test && 
+sbt re/scalafix re/test:scalafix re/it:scalafix &&
+sbt re/scalafmtSbt re/scalafmt re/test:scalafmt re/it:scalafmt &&
+sbt clean re/compile re/test:compile re/it:compile re/test &&
 sbt scalastyle test:scalastyle it:scalastyle &&
 sbt scapegoat cpd stats
+```
+
+Run:
+```bash
+sbt reJS/run # run Scala JS
+sbt reJVM/run # run Scala JVM
+sbt re/run # run Scala Native
+```
+
+Or all runs:
+```bash
+sbt reJS/run reJVM/run re/run
 ```
