@@ -3,6 +3,8 @@ import sbt.inConfig
 import sbtcrossproject.CrossPlugin.autoImport.{CrossType, crossProject}
 import scoverage.ScoverageKeys.coverageEnabled
 
+resolvers += Resolver.sonatypeRepo("snapshots")
+
 val ScalaFixScalacOptions = Seq(
   "-Ywarn-adapted-args", // for NoAutoTupling
   "-Ywarn-unused", // for RemoveUnused
@@ -49,27 +51,30 @@ val SharedSettings = Seq(
 )
 
 val jsSettings = Seq(
+  coverageEnabled := true,
   mainClass in Compile := mainClassSome,
   scalaJSUseMainModuleInitializer := true,
-  coverageEnabled := true,
+  scalaJSModuleKind := ModuleKind.CommonJSModule,
   libraryDependencies ++= Seq(
     "biz.enef" %%% "slogging-winston" % SloggingVersion,
   ),
 )
 
 val jvmSettings = Seq(
-  mainClass in Compile := mainClassSome,
-  scalaJSUseMainModuleInitializer := true,
   coverageEnabled := true,
+  mainClass in Compile := mainClassSome,
   libraryDependencies ++= Seq(
+    "biz.enef" %% "slogging-slf4j" % SloggingVersion,
     "ch.qos.logback" % "logback-classic" % "1.2.3",
   ),
 )
 
 val nativeSettings = Seq(
   nativeLinkStubs := true,
+//  nativeLinkingOptions += "-lglib-2.0",
   libraryDependencies ++= Seq(
     "biz.enef" %%% "slogging-syslog" % SloggingVersion,
+    "biz.enef" %%% "slogging-glib" % SloggingVersion,
   ),
 )
 
