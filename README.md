@@ -1,4 +1,7 @@
 # resentiment
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/53879302eadd48c38adcbbdc68e7ccfb)](https://app.codacy.com/app/kamil-adam/resentiment?utm_source=github.com&utm_medium=referral&utm_content=writeonly/resentiment&utm_campaign=Badge_Grade_Dashboard)
+
 Proof of concept - a portable application in Scala/JVM, Scala.js &amp; Scala Native
 
 Clone:
