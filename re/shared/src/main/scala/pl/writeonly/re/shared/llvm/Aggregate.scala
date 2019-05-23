@@ -7,7 +7,7 @@ import scalaz.Scalaz._
 case class Aggregate(name: Token, count: Int) extends Ordered[Aggregate] {
 
   def compare(that: Aggregate): Int =
-    (this.count, this.name).compare((that.count, that.name))
+    (that.count, this.name).compare((this.count, that.name))
 }
 
 object Aggregate {
