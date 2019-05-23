@@ -76,6 +76,7 @@ val jvmSettings = Seq(
 )
 
 val nativeSettings = Seq(
+  mainClass in Compile := mainClassSome,
   nativeLinkStubs := true,
 //  nativeLinkingOptions += "-lglib-2.0",
   libraryDependencies ++= Seq(
