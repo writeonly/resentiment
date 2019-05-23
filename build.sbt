@@ -14,7 +14,8 @@ val ScalaFixScalacOptionsOff = Seq(
   "-Xfatal-warnings",   // it should be disabled for scalafix
 )
 
-val mainClassString = "pl.writeonly.re.main.Main"
+//val mainClassString = "pl.writeonly.re.main.Main"
+val mainClassString = "pl.writeonly.re.main.llvm.Main"
 val mainClassSome = Some(mainClassString)
 
 scalaVersion := "2.11.12"
