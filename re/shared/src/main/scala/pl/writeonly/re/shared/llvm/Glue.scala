@@ -14,6 +14,15 @@ class Glue extends StrictLogging {
       .map(Aggregate.aggregateFromLines)
       .foreach(_.map(_.toString()).foreach(s => logger.info(s)))
 
+
+//    levels
+//      .map(path + _)
+//      .map(AggregateTable.apply)
+//      .foreach(a => {
+//        logger.info(a.dirName)
+//        a.aggregates.foreach(s => logger.info(s.toString))
+//      })
+
 //    val aggregates = path |> Dir.linesFromDir |> Aggregate.aggregateFromLines
 //
 //    aggregates
