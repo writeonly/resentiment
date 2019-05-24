@@ -8,6 +8,8 @@ case class Aggregate(name: Token, count: Int) extends Ordered[Aggregate] {
 
   def compare(that: Aggregate): Int =
     (that.count, this.name).compare((this.count, that.name))
+
+  def show: String = "(" + name.show + Separator + count.toString + ")"
 }
 
 object Aggregate {
