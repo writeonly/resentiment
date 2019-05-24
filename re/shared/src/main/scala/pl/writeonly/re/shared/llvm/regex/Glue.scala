@@ -14,12 +14,12 @@ class Glue extends StrictLogging {
       .map(path + _)
       .map(AggregateTable.apply)
 
-    "ALL DATAS" |> info
+    "ALL DATA" |> info
     tables
       .map(_.show)
       .foreach(info)
 
-    "FILTRED DATAS" |> info
+    "FILTERED DATA" |> info
     tables
       .map(_.showWithLimit(Limit))
       .foreach(info)
