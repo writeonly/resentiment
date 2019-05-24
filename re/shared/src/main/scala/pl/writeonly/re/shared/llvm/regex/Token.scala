@@ -12,13 +12,13 @@ case class Token(token: String) extends Ordered[Token] {
 object Token {
   private val r = """^  (%\d+ = )?(\w+).*$""".r
 
-  def parseLine(input: String): Option[Token] = input match {
+  def parseLines(xs: List[String]): List[Token] = xs
+    .map(parseLine)
+    .flatMap(_.toList)
+
+  private def parseLine(input: String): Option[Token] = input match {
     case r(_, token) => token |> (Token(_)) |> Option.apply
     case _           => Option.empty[Token]
   }
 
-  def parseLines(it: List[String]): List[Option[Token]] = it.map(parseLine)
-
-  def parseLines2(it: List[String]): List[Token] =
-    (it |> parseLines) flatMap (_.toList)
 }

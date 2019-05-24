@@ -22,5 +22,5 @@ object Aggregate {
       .sorted
 
   def aggregateFromLines(lines: List[String]): List[Aggregate] =
-    lines |> Token.parseLines2 |> Aggregate.aggregate
+    lines |> Token.parseLines |> Aggregate.aggregate
 }
