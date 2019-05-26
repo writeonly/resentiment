@@ -1,7 +1,6 @@
 package pl.writeonly.re.shared.llvm.regex
 
 import scalaz.Scalaz._
-
 import utest._
 
 @SuppressWarnings(Array("org.wartremover.warts.Any"))
