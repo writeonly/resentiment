@@ -16,7 +16,7 @@ object Instruction {
     .map(parseLine)
     .flatMap(_.toList)
 
-  private def parseLine(input: String): Option[Instruction] = input match {
+  private[regex] def parseLine(input: String): Option[Instruction] = input match {
     case r(_, token) => token |> (Instruction(_)) |> Option.apply
     case _           => Option.empty[Instruction]
   }

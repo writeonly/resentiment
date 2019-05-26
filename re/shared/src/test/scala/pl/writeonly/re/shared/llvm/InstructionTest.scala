@@ -5,7 +5,7 @@ import scalaz.Scalaz._
 import utest._
 
 @SuppressWarnings(Array("org.wartremover.warts.Any"))
-object TokenTest extends TestSuite {
+object InstructionTest extends TestSuite {
   val parse = Instruction.parseLine _
 
   val Alloca = "alloca"
