@@ -4,7 +4,7 @@ import scala.math.Ordered.orderingToOrdered
 
 import scalaz.Scalaz._
 
-case class Aggregate(name: Token, count: Int) extends Ordered[Aggregate] {
+case class Aggregate(name: Instruction, count: Int) extends Ordered[Aggregate] {
 
   def compare(that: Aggregate): Int =
     (that.count, this.name).compare((this.count, that.name))
@@ -14,7 +14,7 @@ case class Aggregate(name: Token, count: Int) extends Ordered[Aggregate] {
 
 object Aggregate {
 
-  def aggregate(it: List[Token]): List[Aggregate] =
+  def aggregate(it: List[Instruction]): List[Aggregate] =
     it.groupBy(identity)
       .mapValues(_.size)
       .toList
@@ -22,5 +22,5 @@ object Aggregate {
       .sorted
 
   def aggregateFromLines(lines: List[String]): List[Aggregate] =
-    lines |> Token.parseLines |> Aggregate.aggregate
+    lines |> Instruction.parseLines |> Aggregate.aggregate
 }

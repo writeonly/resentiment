@@ -1,12 +1,12 @@
 package pl.writeonly.re.shared.llvm
 
-import pl.writeonly.re.shared.llvm.regex.Token
+import pl.writeonly.re.shared.llvm.regex.Instruction
 import scalaz.Scalaz._
 import utest._
 
 @SuppressWarnings(Array("org.wartremover.warts.Any"))
 object TokenTest extends TestSuite {
-  val parse = Token.parseLine _
+  val parse = Instruction.parseLine _
 
   val Alloca = "alloca"
   val Store = "store"
@@ -24,13 +24,13 @@ object TokenTest extends TestSuite {
 
     'alloca - {
       assertMatch(parse(AllocaLine)) {
-        case Some(word: Token) if word.token === Alloca =>
+        case Some(word: Instruction) if word.token === Alloca =>
       }
     }
 
     'store - {
       assertMatch(parse(StoreLine)) {
-        case Some(word: Token) if word.token === Store =>
+        case Some(word: Instruction) if word.token === Store =>
       }
     }
 
