@@ -1,7 +1,5 @@
-package pl.writeonly.re.shared.llvm
+package pl.writeonly.re.shared.llvm.regex
 
-import pl.writeonly.re.shared.llvm.regex.Instruction
-import scalaz.Scalaz._
 import utest._
 
 @SuppressWarnings(Array("org.wartremover.warts.Any"))
