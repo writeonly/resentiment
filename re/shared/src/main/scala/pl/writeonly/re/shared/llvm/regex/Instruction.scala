@@ -20,5 +20,4 @@ object Instruction {
     case r(_, token) => token |> (Instruction(_)) |> Option.apply
     case _           => Option.empty[Instruction]
   }
-
 }
