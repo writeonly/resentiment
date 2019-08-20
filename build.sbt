@@ -17,7 +17,12 @@ val ScalaFixScalacOptionsOff = Seq(
 val mainClassString = "pl.writeonly.re.main.Main"
 val mainClassSome = Some(mainClassString)
 
-scalaVersion := "2.11.12"
+//scalaVersion      := "2.12.4-bin-typelevel-4" 
+scalaVersion      :=  "2.11.11-bin-typelevel-4"
+scalaOrganization := "org.typelevel"
+scalacOptions     += "-Yliteral-types"
+
+//scalaVersion := "2.11.12"
 scapegoatVersion in ThisBuild := "1.3.8"
 scalacOptions ++= scalacOptionsFor(scalaVersion.value)
 val ScalaPropsVersion = "0.5.5"
@@ -41,6 +46,8 @@ val SharedSettings = Seq(
     "biz.enef" %%% "slogging" % SloggingVersion,
   ),
   libraryDependencies += "com.lihaoyi" %%% "fastparse" % "1.0.0",
+  libraryDependencies += "tech.sparse" %%% "pine" % "0.1.3",
+  libraryDependencies += scalaOrganization.value % "scala-reflect" % scalaVersion.value,
   scalaJSUseMainModuleInitializer := true,
   scalaJSMainModuleInitializer := Some(
     ModuleInitializer.mainMethod(mainClassString, "main")
