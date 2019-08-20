@@ -1,5 +1,5 @@
 import org.scalajs.core.tools.linker.ModuleInitializer
-import sbt.inConfig
+import sbt.{addCompilerPlugin, inConfig}
 import sbtcrossproject.CrossPlugin.autoImport.{CrossType, crossProject}
 import scoverage.ScoverageKeys.coverageEnabled
 
@@ -66,6 +66,8 @@ val jsSettings = Seq(
 //    "biz.enef" %%% "slogging-winston" % SloggingVersion,
 //    "biz.enef" %%% "slogging-http" % SloggingVersion,
   ),
+  libraryDependencies := libraryDependencies.value.filterNot(_.name == "scalajs-compiler"),
+  addCompilerPlugin("org.scala-js" % "scalajs-compiler" % scalaJSVersion cross CrossVersion.patch),
 )
 
 val jvmSettings = Seq(
@@ -75,7 +77,6 @@ val jvmSettings = Seq(
     "biz.enef" %% "slogging-slf4j" % SloggingVersion,
     "ch.qos.logback" % "logback-classic" % "1.2.3",
   ),
-  libraryDependencies := libraryDependencies.value.filterNot(_.name == "scalajs-compiler"),
 )
 
 val nativeSettings = Seq(
@@ -86,6 +87,7 @@ val nativeSettings = Seq(
 //    "biz.enef" %%% "slogging-syslog" % SloggingVersion,
   ),
   libraryDependencies := libraryDependencies.value.filterNot(_.name == "nscplugin"),
+  addCompilerPlugin("org.scala-native" % "nscplugin" % nativeVersion cross CrossVersion.patch),
 )
 
 lazy val re = crossProject(JSPlatform, JVMPlatform, NativePlatform)
