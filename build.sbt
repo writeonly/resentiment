@@ -75,6 +75,7 @@ val jvmSettings = Seq(
     "biz.enef" %% "slogging-slf4j" % SloggingVersion,
     "ch.qos.logback" % "logback-classic" % "1.2.3",
   ),
+  libraryDependencies := libraryDependencies.value.filterNot(_.name == "scalajs-compiler"),
 )
 
 val nativeSettings = Seq(
@@ -84,6 +85,7 @@ val nativeSettings = Seq(
 //    "biz.enef" %%% "slogging-glib" % SloggingVersion,
 //    "biz.enef" %%% "slogging-syslog" % SloggingVersion,
   ),
+  libraryDependencies := libraryDependencies.value.filterNot(_.name == "nscplugin"),
 )
 
 lazy val re = crossProject(JSPlatform, JVMPlatform, NativePlatform)

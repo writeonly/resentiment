@@ -36,3 +36,8 @@ addSbtPlugin("com.github.sbt" % "sbt-cpd" % "2.0.0")
 
 //// scalaprops -  property based testing library for Scala
 addSbtPlugin("com.github.scalaprops" % "sbt-scalaprops" % "0.2.6")
+
+//
+//// pine
+addCompilerPlugin("org.scala-js" % "scalajs-compiler" % scalaJSVersion cross CrossVersion.patch)
+addCompilerPlugin("org.scala-native" % "nscplugin" % nativeVersion cross CrossVersion.patch)
