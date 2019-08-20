@@ -1,6 +1,7 @@
 package pl.writeonly.re.main
 
 import pl.writeonly.re.shared.core._
+import pl.writeonly.re.shared.optparse.applicative.SampleMain
 import slogging._
 import slogging.TerminalLoggerFactory.TerminalControlCode
 
@@ -14,4 +15,6 @@ object Main extends App {
   Core.apply("Native")
 
   StrictLoggingCore.rainbow()
+
+  SampleMain.main(args)
 }
