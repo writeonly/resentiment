@@ -5,6 +5,8 @@ import scoverage.ScoverageKeys.coverageEnabled
 
 resolvers += Resolver.sonatypeRepo("snapshots")
 
+resolvers += "mmreleases" at "https://artifactory.mediamath.com/artifactory/libs-release-global"
+
 val ScalaFixScalacOptions = Seq(
   "-Ywarn-adapted-args", // for NoAutoTupling
   "-Ywarn-unused", // for RemoveUnused
@@ -41,6 +43,7 @@ val SharedSettings = Seq(
     "biz.enef" %%% "slogging" % SloggingVersion,
   ),
   libraryDependencies += "com.lihaoyi" %%% "fastparse" % "1.0.0",
+  libraryDependencies += "com.mediamath" %%% "scala-json" % "1.1",
   scalaJSUseMainModuleInitializer := true,
   scalaJSMainModuleInitializer := Some(
     ModuleInitializer.mainMethod(mainClassString, "main")
