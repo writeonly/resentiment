@@ -11,7 +11,7 @@ addSbtPlugin("org.scoverage" % "sbt-coveralls" % "1.2.7")
 
 // static code analysis read-write
 //// Scalafix - Refactoring and linting tool for Scala
-addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.9.0")
+addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.9.7")
 //// Scalafmt - Code formatter for Scala
 addSbtPlugin("com.geirsson" % "sbt-scalafmt" % "1.5.1")
 //// sbt-scalariform - sbt plugin adding support for source code formatting using Scalariform
@@ -21,7 +21,7 @@ addSbtPlugin("com.geirsson" % "sbt-scalafmt" % "1.5.1")
 //// Scalastyle - Scala style checker
 addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "1.0.0")
 //// WartRemover: a flexible scala linter
-addSbtPlugin("org.wartremover" % "sbt-wartremover" % "2.3.7")
+addSbtPlugin("org.wartremover" % "sbt-wartremover" % "2.4.3")
 //// Scapegoat - Scala compiler plugin for static code analysis
 addSbtPlugin("com.sksamuel.scapegoat" %% "sbt-scapegoat" % "1.0.9")
 //// linter - Static Analysis Compiler Plugin for Scala
