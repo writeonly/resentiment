@@ -46,7 +46,7 @@ sbt scapegoat cpd stats
 All for travis-ci (without Scala Native):
 ```bash
 sbt 'scalafix --check' 'test:scalafix --check' 'it:scalafix --check' &&
-sbt scalafmtSbtCheck scalafmtCheck test:scalafmtCheck it:scalafmtCheck &&
+sbt scalafmtCheck test:scalafmtCheck it:scalafmtCheck &&
 sbt clean re/compile re/test:compile re/it:compile &&
 sbt coverage reJS/test reJVM/test reJS/it:test reJVM/it:test coverageReport &&
 sbt coverageAggregate &&
