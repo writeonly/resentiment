@@ -22,6 +22,7 @@ scapegoatVersion in ThisBuild := "1.3.8"
 scalacOptions ++= scalacOptionsFor(scalaVersion.value)
 val ScalaPropsVersion = "0.5.5"
 val SloggingVersion = "0.6.1"
+val ScalazVersion = "7.2.27"
 
 val SharedSettings = Seq(
   scalaVersion := "2.11.12",
@@ -36,7 +37,7 @@ val SharedSettings = Seq(
     "com.github.scalaprops" %%% "scalaprops" % ScalaPropsVersion % "test,it",
     "com.github.scalaprops" %%% "scalaprops-scalazlaws" % ScalaPropsVersion % "test,it",
   ),
-  libraryDependencies += "org.scalaz" %%% "scalaz-core" % "7.2.27",
+  libraryDependencies += "org.scalaz" %%% "scalaz-core" % ScalazVersion,
   libraryDependencies ++= Seq(
     "biz.enef" %%% "slogging" % SloggingVersion,
   ),
