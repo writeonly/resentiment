@@ -68,6 +68,7 @@ val jvmSettings = Seq(
   libraryDependencies ++= Seq(
     "biz.enef" %% "slogging-slf4j" % SloggingVersion,
     "ch.qos.logback" % "logback-classic" % "1.2.3",
+    "io.vavr" % "vavr" % "0.10.2",
   ),
 )
 
