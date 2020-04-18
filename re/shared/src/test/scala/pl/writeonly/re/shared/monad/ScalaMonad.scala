@@ -4,8 +4,8 @@ object ScalaMonad extends App {
 
   import scala.collection.Map
 
-  val nestedMap = Map("key1" -> Map("key2" -> Map("key3" -> "MonadsAreAwesome")))
+  val nestedMap = Map("Lisp" -> Map("Meta Language" -> Map("Haskell" -> "MonadsAreAwesome")))
 
-  println(nestedMap.get("key1") flatMap (_.get("key2") flatMap (_.get("key3"))))
-  println(nestedMap.get("key1") flatMap (_.get(":()") flatMap (_.get("key3"))))
+  println(nestedMap.get("Lisp") flatMap (_.get("Meta Language") flatMap (_.get("Haskell"))))
+  println(nestedMap.get("Lisp") flatMap (_.get(":()") flatMap (_.get("Haskell"))))
 }
